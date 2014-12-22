@@ -15,10 +15,10 @@ run-playbook-dev:
 	ansible all --ask-sudo-pass -s --inventory-file $(ANSIBLE_LOCAL_INVENTORY_FILE) -m raw -a "[ -e /usr/bin/yum ] && yum install -y python-simplejson" || true # https://github.com/ansible/ansible/issues/1529
 	$(ANSIBLE_PLAYBOOK_CMD) --ask-sudo-pass --inventory-file $(ANSIBLE_LOCAL_INVENTORY_FILE) $(ANSIBLE_LOCAL_PLAYBOOK_FILE)
 
-test-syntax:
+syntax:
 	$(ANSIBLE_PLAYBOOK_CMD) --syntax-check --inventory-file $(ANSIBLE_LOCAL_INVENTORY_FILE) $(ANSIBLE_LOCAL_PLAYBOOK_FILE)
 
-test-check:
+check:
 	$(ANSIBLE_PLAYBOOK_CMD) --check --inventory-file $(ANSIBLE_LOCAL_INVENTORY_FILE) $(ANSIBLE_LOCAL_PLAYBOOK_FILE)
 
-test: test-syntax test-check
+test: syntax check
