@@ -1,0 +1,16 @@
+---
+- name: import mackerel GPG key
+  apt_key: url=https://mackerel.io/assets/files/GPG-KEY-mackerel state=present
+
+- name: add repository 'mackerel'
+  apt_repository: repo='deb http://apt.mackerel.io/debian/ mackerel contrib' state=present update_cache=yes
+
+- name: install mackerel-agent
+  apt: name=mackerel-agent state=latest
+
+- name: update config
+  template: src=mackerel-agent.conf.j2 dest=/etc/mackerel-agent/mackerel-agent.conf
+  notify: restart mackerel-agent
+
+- name: start mackerel-agent
+  service: name=mackerel-agent state=started

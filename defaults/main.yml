@@ -1,0 +1,10 @@
+---
+mackerel_agent_apikey: "yourapikey"
+# mackerel_agent_pidfile: "/var/run/mackerel-agent.pid"
+# mackerel_agent_root: "/var/lib/mackerel-agent"
+# mackerel_agent_verbose: true
+# mackerel_agent_roles:
+#                 - "My-Service:app"
+#                 - "Another-Service:db"
+# mackerel_agent_plugins:
+#                 - jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"

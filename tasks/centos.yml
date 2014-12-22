@@ -1,0 +1,16 @@
+---
+- name: import mackerel GPG key
+  rpm_key: key=https://mackerel.io/assets/files/GPG-KEY-mackerel
+
+- name: add repository 'mackerel'
+  copy: src=mackerel.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
+
+- name: install mackerel-agent
+  yum: name=mackerel-agent state=latest
+
+- name: update config
+  template: src=mackerel-agent.conf.j2 dest=/etc/mackerel-agent/mackerel-agent.conf
+  notify: restart mackerel-agent
+
+- name: start mackerel-agent
+  service: name=mackerel-agent state=started
