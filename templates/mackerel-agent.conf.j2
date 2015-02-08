@@ -1,24 +1,25 @@
 apikey = "{{ mackerel_agent_apikey }}"
-{%- if mackerel_agent_pidfile is defined -%}
+{% if mackerel_agent_pidfile is defined %}
 pidfile = "{{ mackerel_agent_pidfile }}"
-{%- endif -%}
-{%- if mackerel_agent_root is defined -%}
+{% endif %}
+{% if mackerel_agent_root is defined %}
 root = "{{ mackerel_agent_root }}"
-{%- endif -%}
-{%- if mackerel_agent_verbose is defined -%}
-verbose = "{{ mackerel_agent_verbose }}"
-{%- endif -%}
-{%- if mackerel_agent_roles is defined -%}
-roles = [
-{%- for role in mackerel_agent_roles -%}
-  "{{ role.service }}:{{ role.role }}",
-{%- endfor -%}
-]
-{%- endif -%}
+{% endif %}
+{% if mackerel_agent_verbose is defined %}
+verbose = {% if mackerel_agent_verbose -%} true {% else -%} false {%- endif %}
+{% endif %}
 
-{%- if mackerel_agent_plugins is defined -%}
-{%- for key in mackerel_agent_roles -%}
-"[plugin.metrics.{{ key }}]"
+{% if mackerel_agent_roles is defined %}
+roles = [
+{% for role in mackerel_agent_roles %}
+  "{{ role }}",
+{% endfor %}
+]
+{% endif %}
+
+{% if mackerel_agent_plugins is defined %}
+{% for key in mackerel_agent_roles %}
+[plugin.metrics.{{ key }}]
 command = "{{ mackerel_agent_roles[key] }}"
-{%- endfor -%}
-{%- endif -%}
+{% endfor %}
+{% endif %}
