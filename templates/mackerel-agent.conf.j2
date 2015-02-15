@@ -18,8 +18,8 @@ roles = [
 {% endif %}
 
 {% if mackerel_agent_plugins is defined %}
-{% for key in mackerel_agent_roles %}
+{% for key in mackerel_agent_plugins %}
 [plugin.metrics.{{ key }}]
-command = "{{ mackerel_agent_roles[key] }}"
+command = "{{ mackerel_agent_plugins[key] }}"
 {% endfor %}
 {% endif %}
