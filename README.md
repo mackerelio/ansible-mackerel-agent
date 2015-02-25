@@ -19,7 +19,7 @@ mackerel_agent_roles:
                  - "My-Service:app"
                  - "Another-Service:db"
 mackerel_agent_plugins:
-                 - jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
+                 jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
 ```
 
 Example Playbook
