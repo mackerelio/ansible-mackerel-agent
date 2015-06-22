@@ -17,6 +17,10 @@ roles = [
 ]
 {% endif %}
 
+{% if mackerel_agent_include is defined %}
+include = "{{ mackerel_agent_include }}"
+{% endif %}
+
 {% if mackerel_agent_plugins is defined %}
 {% for key, command in mackerel_agent_plugins.items() %}
 [plugin.metrics.{{ key }}]
