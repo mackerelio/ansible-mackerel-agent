@@ -8,3 +8,4 @@ mackerel_agent_apikey: "yourapikey"
 #                 - "Another-Service:db"
 # mackerel_agent_plugins:
 #                 jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
+mackerel_use_plugins: no

@@ -15,3 +15,13 @@
   notify:
     - restart mackerel-agent
 
+- name: install mackerel-agent-plugins
+  apt: 
+    name: mackerel_agent_plugins 
+    state: latest
+    update_cache: yes
+    force: yes
+    dpkg_options: 'force-confdef,force-confold'
+  when: mackerel_use_plugins
+  notify:
+    - restart mackerel-agent
