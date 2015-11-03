@@ -1,8 +1,9 @@
 ---
 - include: debian.yml
   when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
 - include: centos.yml
-  when: ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
+  when: ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux" or ansible_distribution == "Amazon" or ansible_pkg_mgr == "yum"
 
 - name: update config
   template: src=mackerel-agent.conf.j2 dest=/etc/mackerel-agent/mackerel-agent.conf
