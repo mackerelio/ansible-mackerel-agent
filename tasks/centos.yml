@@ -9,7 +9,7 @@
   yum: name=mackerel-agent state=latest
 
 - name: install mackerel-agent-plugins
-  yum: name=mackerel_agent_plugins state=latest
+  yum: name=mackerel-agent-plugins state=latest
   when: mackerel_use_plugins
   notify: 
     - restart mackerel-agent

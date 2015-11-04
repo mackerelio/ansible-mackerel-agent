@@ -17,7 +17,7 @@
 
 - name: install mackerel-agent-plugins
   apt: 
-    name: mackerel_agent_plugins 
+    name: mackerel-agent-plugins 
     state: latest
     update_cache: yes
     force: yes
