@@ -27,3 +27,10 @@ include = "{{ mackerel_agent_include }}"
 command = "{{ command }}"
 {% endfor %}
 {% endif %}
+
+{% if mackerel_check_plugins is defined %}
+{% for key, command in mackerel_check_plugins.items() %}
+[plugin.checks.{{ key }}]
+command = "{{ command }}"
+{% endfor %}
+{% endif %}

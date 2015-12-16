@@ -1,7 +1,13 @@
 ansible-mackerel-agent
 ======================
 
-An Ansible role for installing mackerel-agent.
+An Ansible role for installing mackerel-agent and official plugins.
+
+### Official Plugins
+
+* [mackerelio/mackerel-agent-plugins](https://github.com/mackerelio/mackerel-agent-plugins)
+* [mackerelio/go-check-plugins](https://github.com/mackerelio/go-check-plugins)
+
 
 Requirements & Dependencies
 ---------------------------
@@ -23,6 +29,9 @@ mackerel_agent_roles:
 mackerel_use_plugins: yes # default: no
 mackerel_agent_plugins:
                  jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
+                 
+mackerel_check_plugins:
+                 check_cron: "/usr/local/bin/check-procs -p crond"
 ```
 
 Example Playbook
