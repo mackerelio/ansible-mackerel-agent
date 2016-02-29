@@ -2,6 +2,10 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.4.0
+------
+- Add task to install check plugins #6 (by Kuchitama)
+
 v0.3.0
 ------
 - add AmazonLinux to target distributions #3 (by Kuchitama)
