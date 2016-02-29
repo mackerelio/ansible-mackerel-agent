@@ -13,4 +13,10 @@
   when: mackerel_use_plugins
   notify: 
     - restart mackerel-agent
+    
+- name: install mackerel-check-plugins
+  yum: name=mackerel-check-plugins state=latest
+  when: mackerel_use_plugins
+  notify: 
+    - restart mackerel-agent
 
