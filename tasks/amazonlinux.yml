@@ -3,7 +3,7 @@
   rpm_key: key=https://mackerel.io/assets/files/GPG-KEY-mackerel
 
 - name: add repository 'mackerel'
-  copy: src=centos-mackerel.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
+  copy: src=amazonlinux-mackerel.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
 
 - name: install mackerel-agent
   yum: name=mackerel-agent state=latest
