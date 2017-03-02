@@ -8,6 +8,9 @@ root = "{{ mackerel_agent_root }}"
 {% if mackerel_agent_verbose is defined %}
 verbose = {% if mackerel_agent_verbose -%} true {% else -%} false {%- endif %}
 {% endif %}
+{% if mackerel_agent_display_name is defined %}
+display_name = "{{ mackerel_agent_display_name }}"
+{% endif %}
 
 {% if mackerel_agent_roles is defined %}
 roles = [
