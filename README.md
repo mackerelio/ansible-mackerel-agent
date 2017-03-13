@@ -24,7 +24,8 @@ mackerel_agent_root: "/var/lib/mackerel-agent"
 mackerel_agent_roles:
                  - "My-Service:app"
                  - "Another-Service:db"
-                 
+mackerel_agent_display_name: "My host"
+
 # optional 
 mackerel_use_plugins: yes # default: no
 mackerel_agent_plugins:
