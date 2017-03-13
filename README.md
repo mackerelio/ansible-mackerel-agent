@@ -19,18 +19,18 @@ Role Variables
 
 ```yml
 mackerel_agent_apikey: "yourapikey"
+
+# optional
 mackerel_agent_pidfile: "/var/run/mackerel-agent.pid"
 mackerel_agent_root: "/var/lib/mackerel-agent"
 mackerel_agent_roles:
                  - "My-Service:app"
                  - "Another-Service:db"
 mackerel_agent_display_name: "My host"
-
-# optional 
 mackerel_use_plugins: yes # default: no
 mackerel_agent_plugins:
                  jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
-                 
+
 mackerel_check_plugins:
                  check_cron: "/usr/local/bin/check-procs -p crond"
 ```
