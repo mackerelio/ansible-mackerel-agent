@@ -1,3 +1,4 @@
 ---
 - name: restart mackerel-agent
   service: name=mackerel-agent state=restarted
+  when: mackerel_agent_start_on_setup
