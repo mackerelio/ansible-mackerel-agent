@@ -2,6 +2,11 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.6.0
+------
+- Enable to edit display-name from role variables. #8 (by attakei)
+- Add mackerel_agent_start_on_setup. #10 (by buzztaiki)
+
 v0.5.0
 ------
 - Add AmazonLinux "mackerel.repo". #7 (by takeshinoda)
