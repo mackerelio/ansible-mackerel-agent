@@ -33,6 +33,7 @@ mackerel_agent_plugins:
 
 mackerel_check_plugins:
                  check_cron: "/usr/local/bin/check-procs -p crond"
+mackerel_agent_start_on_setup: yes # default: yes
 ```
 
 Example Playbook

@@ -14,3 +14,4 @@
 
 - name: start mackerel-agent
   service: name=mackerel-agent state=started
+  when: mackerel_agent_start_on_setup
