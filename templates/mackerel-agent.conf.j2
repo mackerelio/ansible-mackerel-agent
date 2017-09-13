@@ -32,8 +32,26 @@ command = "{{ command }}"
 {% endif %}
 
 {% if mackerel_check_plugins is defined %}
-{% for key, command in mackerel_check_plugins.items() %}
+{% for key, value in mackerel_check_plugins.items() %}
 [plugin.checks.{{ key }}]
-command = "{{ command }}"
+{% if value.command is defined %}
+command = "{{ value.command }}"
+
+{% if value.notification_interval is defined %}
+notification_interval = {{ value.notification_interval }}
+{% endif %}
+{% if value.max_check_attempts is defined %}
+max_check_attempts = {{ value.max_check_attempts }}
+{% endif %}
+{% if value.check_interval is defined %}
+check_interval = {{ value.check_interval }}
+{% endif %}
+{% if value.prevent_alert_auto_close is defined %}
+prevent_alert_auto_close = {{ value.prevent_alert_auto_close | bool | lower }}
+{% endif %}
+
+{% else %}
+command = "{{ value }}"
+{% endif %}
 {% endfor %}
 {% endif %}
