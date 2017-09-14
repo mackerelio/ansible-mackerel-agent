@@ -33,6 +33,12 @@ mackerel_agent_plugins:
 
 mackerel_check_plugins:
   check_cron: "/usr/local/bin/check-procs -p crond"
+  uptime:
+    command: "check-uptime --warning-under=600 --critical-under=120"
+    notification_interval: 10
+    max_check_attempts: 3
+    check_interval: 5
+    prevent_alert_auto_close: true
 ```
 
 Example Playbook
