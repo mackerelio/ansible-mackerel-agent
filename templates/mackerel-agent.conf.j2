@@ -50,8 +50,8 @@ check_interval = {{ value.check_interval }}
 prevent_alert_auto_close = {{ value.prevent_alert_auto_close | bool | lower }}
 {% endif %}
 
-{% else %}
+{% else %}{# if value.command is defined #}
 command = "{{ value }}"
-{% endif %}
-{% endfor %}
-{% endif %}
+{% endif %}{# if value.command is defined #}
+{% endfor %}{# for key, value in mackerel_check_plugins.items() #}
+{% endif %}{# if mackerel_check_plugins is defined #}
