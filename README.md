@@ -24,16 +24,21 @@ mackerel_agent_apikey: "yourapikey"
 mackerel_agent_pidfile: "/var/run/mackerel-agent.pid"
 mackerel_agent_root: "/var/lib/mackerel-agent"
 mackerel_agent_roles:
-                 - "My-Service:app"
-                 - "Another-Service:db"
+  - "My-Service:app"
+  - "Another-Service:db"
 mackerel_agent_display_name: "My host"
 mackerel_use_plugins: yes # default: no
 mackerel_agent_plugins:
-                 jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
+  jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
 
 mackerel_check_plugins:
-                 check_cron: "/usr/local/bin/check-procs -p crond"
-mackerel_agent_start_on_setup: yes # default: yes
+  check_cron: "/usr/local/bin/check-procs -p crond"
+  uptime:
+    command: "check-uptime --warning-under=600 --critical-under=120"
+    notification_interval: 10
+    max_check_attempts: 3
+    check_interval: 5
+    prevent_alert_auto_close: true
 ```
 
 Example Playbook
@@ -41,14 +46,14 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-```yml 
+```yml
 - 
   hosts: Hatena-Antenna2_backend
   vars:
     - mackerel_agent_apikey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     - mackerel_agent_roles:
-          - "My-Service:app"
-          - "Another-Service:db"
+      - "My-Service:app"
+      - "Another-Service:db"
   roles:
     - mackerel-agent
 ```
