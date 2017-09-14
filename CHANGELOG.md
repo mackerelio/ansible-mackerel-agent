@@ -2,6 +2,10 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.7.0
+------
+- Allow to specify options for check plugins #12 (by syou6162)
+
 v0.6.0
 ------
 - Enable to edit display-name from role variables. #8 (by attakei)
