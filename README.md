@@ -29,10 +29,10 @@ mackerel_agent_roles:
 mackerel_agent_display_name: "My host"
 mackerel_use_plugins: yes # default: no
 mackerel_agent_plugins:
-  jvm: "/usr/local/bin/mackerel-plugin-jvm -javaname=NettyServer"
+  jvm: "/usr/bin/mackerel-plugin-jvm -javaname=NettyServer"
 
 mackerel_check_plugins:
-  check_cron: "/usr/local/bin/check-procs -p crond"
+  check_cron: "/usr/bin/check-procs -p crond"
   uptime:
     command: "check-uptime --warning-under=600 --critical-under=120"
     notification_interval: 10
