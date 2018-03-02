@@ -1,6 +1,6 @@
 ---
 - name: import mackerel GPG key
-  rpm_key: key=https://mackerel.io/assets/files/GPG-KEY-mackerel
+  rpm_key: key=https://mackerel.io/file/cert/GPG-KEY-mackerel
 
 - name: add repository 'mackerel'
   copy: src=centos-mackerel.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
