@@ -1,0 +1,5 @@
+[mackerel]
+name=mackerel-agent
+baseurl=http://yum.mackerel.io/v2/$basearch
+gpgcheck=1
+enabled=1
