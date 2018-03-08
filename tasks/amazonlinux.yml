@@ -3,9 +3,9 @@
   shell: yum info installed system-release 2>/dev/null | awk '/^Version/ { print $3 }'
   register: release_version
 
-- name: fail the play if the release_version.stdout is empty
-  fail: msg="failed to get os release version"
-  when: release_version.stdout == ""
+- name: fail the play if the conversion of release_version.stdout does not work
+  fail: msg="failed to convert the `release version` ({{ release_version.stdout }})"
+  when: release_version.stdout|float == 0.0
 
 - name: import mackerel GPG key
   rpm_key: key=https://mackerel.io/file/cert/GPG-KEY-mackerel
