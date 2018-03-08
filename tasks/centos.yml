@@ -11,7 +11,7 @@
   copy: src=centos-mackerel.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
   when: ansible_distribution_major_version|int < 7
 
-- name: add repository 'mackerel'
+- name: add repository 'mackerel' v2
   copy: src=centos-mackerel-v2.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
   when: ansible_distribution_major_version|int >= 7
 
