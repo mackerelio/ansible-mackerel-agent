@@ -1,9 +1,23 @@
 ---
+- name: register release version
+  shell: yum info installed system-release 2>/dev/null | awk '/^Version/ { print $3 }'
+  register: release_version
+
 - name: import mackerel GPG key
   rpm_key: key=https://mackerel.io/file/cert/GPG-KEY-mackerel
+  when: release_version.rc == 0 and release_version.stdout|float < 2017.12
+
+- name: import mackerel GPG key v2
+  rpm_key: key=https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
+  when: release_version.rc == 0 and release_version.stdout|float >= 2017.12
 
 - name: add repository 'mackerel'
   copy: src=amazonlinux-mackerel.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
+  when: release_version.rc == 0 and release_version.stdout|float < 2017.12
+
+- name: add repository 'mackerel' v2
+  copy: src=amazonlinux-mackerel-v2.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
+  when: release_version.rc == 0 and release_version.stdout|float >= 2017.12
 
 - name: install mackerel-agent
   yum: name=mackerel-agent state=latest
