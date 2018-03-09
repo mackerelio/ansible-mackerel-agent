@@ -1,9 +1,23 @@
 ---
 - name: import mackerel GPG key
   apt_key: url=https://mackerel.io/file/cert/GPG-KEY-mackerel state=present
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version|int < 8) or
+        (ansible_distribution == "Ubuntu" and ansible_distribution_version|float < 16.04)
+
+- name: import mackerel GPG key v2
+  apt_key: url=https://mackerel.io/file/cert/GPG-KEY-mackerel-v2 state=present
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version|int >= 8) or
+        (ansible_distribution == "Ubuntu" and ansible_distribution_version|float >= 16.04)
 
 - name: add repository 'mackerel'
   apt_repository: repo='deb http://apt.mackerel.io/debian/ mackerel contrib' state=present update_cache=yes
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version|int < 8) or
+        (ansible_distribution == "Ubuntu" and ansible_distribution_version|float < 16.04)
+
+- name: add repository 'mackerel' v2
+  apt_repository: repo='deb http://apt.mackerel.io/v2/ mackerel contrib' state=present update_cache=yes
+  when: (ansible_distribution == "Debian" and ansible_distribution_major_version|int >= 8) or
+        (ansible_distribution == "Ubuntu" and ansible_distribution_version|float >= 16.04)
 
 - name: install mackerel-agent
   apt:
