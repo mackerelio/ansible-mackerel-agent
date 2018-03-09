@@ -10,22 +10,12 @@ galaxy_info:
     versions:
       - 7
       - 6
-      - 5
   - name: Ubuntu
     versions:
-    - lucid
-    - maverick
-    - natty
-    - oneiric
-    - precise
-    - quantal
-    - raring
-    - saucy
     - trusty
     - xenial
   - name: Debian
     versions:
-    - squeeze
     - wheezy
     - jessie
     - stretch
