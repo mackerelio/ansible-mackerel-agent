@@ -2,6 +2,13 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.8.0
+------
+- Support Amazon Linux 2 #16 (by hayajo)
+- Support v2 packages #15 (by hayajo)
+- New URL for GPG-KEY-mackerel #14 (by astj)
+- Fix Mackerel plugins path to /usr/bin #13 (by tanakahisateru)
+
 v0.7.0
 ------
 - Allow to specify options for check plugins #12 (by syou6162)
