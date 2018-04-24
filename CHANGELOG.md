@@ -2,6 +2,10 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.8.1
+------
+- Fix for supporting Amazon Linux 2018.03 #19 (by hayajo)
+
 v0.8.0
 ------
 - Support Amazon Linux 2 #16 (by hayajo)
