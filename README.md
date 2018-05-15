@@ -30,6 +30,7 @@ mackerel_agent_display_name: "My host"
 mackerel_use_plugins: yes # default: no
 mackerel_agent_plugins:
   jvm: "/usr/bin/mackerel-plugin-jvm -javaname=NettyServer"
+mackerel_agent_include: "/etc/mackerel-agent/conf.d/*.conf"
 
 mackerel_check_plugins:
   check_cron: "/usr/bin/check-procs -p crond"
@@ -55,7 +56,7 @@ Including an example of how to use your role (for instance, with variables passe
       - "My-Service:app"
       - "Another-Service:db"
   roles:
-    - mackerel-agent
+    - mackerelio.mackerel-agent
 ```
 
 License
