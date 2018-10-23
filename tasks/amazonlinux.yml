@@ -5,32 +5,50 @@
   register: check_al2
 
 - name: import mackerel GPG key
-  rpm_key: key=https://mackerel.io/file/cert/GPG-KEY-mackerel
+  rpm_key:
+    key: https://mackerel.io/file/cert/GPG-KEY-mackerel
   when: check_al2.rc != 0
 
 - name: import mackerel GPG key v2
-  rpm_key: key=https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
+  rpm_key:
+    key: https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
   when: check_al2.rc == 0
 
 - name: add repository 'mackerel'
-  copy: src=amazonlinux-mackerel.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
+  copy:
+    src: amazonlinux-mackerel.repo
+    dest: /etc/yum.repos.d/mackerel.repo
+    owner: root
+    group: root
+    mode: 0644
   when: check_al2.rc != 0
 
 - name: add repository 'mackerel' v2
-  copy: src=amazonlinux-mackerel-v2.repo dest=/etc/yum.repos.d/mackerel.repo owner=root group=root mode=0644
+  copy:
+    src: amazonlinux-mackerel-v2.repo
+    dest: /etc/yum.repos.d/mackerel.repo
+    owner: root
+    group: root
+    mode: 0644
   when: check_al2.rc == 0
 
 - name: install mackerel-agent
-  yum: name=mackerel-agent state=latest
+  yum:
+    name: mackerel-agent
+    state: latest
 
 - name: install mackerel-agent-plugins
-  yum: name=mackerel-agent-plugins state=latest
+  yum:
+    name: mackerel-agent-plugins
+    state: latest
   when: mackerel_use_plugins
   notify: 
     - restart mackerel-agent
 
 - name: install mackerel-check-plugins
-  yum: name=mackerel-check-plugins state=latest
+  yum:
+    name: mackerel-check-plugins
+    state: latest
   when: mackerel_use_plugins
   notify: 
     - restart mackerel-agent

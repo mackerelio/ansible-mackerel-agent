@@ -9,9 +9,13 @@
   when: ansible_distribution == "Amazon"
 
 - name: update config
-  template: src=mackerel-agent.conf.j2 dest=/etc/mackerel-agent/mackerel-agent.conf
+  template:
+    src: mackerel-agent.conf.j2
+    dest: /etc/mackerel-agent/mackerel-agent.conf
   notify: restart mackerel-agent
 
 - name: start mackerel-agent
-  service: name=mackerel-agent state=started
+  service:
+    name: mackerel-agent
+    state: started
   when: mackerel_agent_start_on_setup
