@@ -2,6 +2,12 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.8.3
+------
+
+- Improve playbook syntax #22 (by hayajo)
+- Constrain v2 packages to amd64 #21 (by hayajo)
+
 v0.8.2
 ------
 - Fix README #20 (by hayajo)
