@@ -42,7 +42,7 @@
     name: mackerel-agent-plugins
     state: latest
   when: mackerel_use_plugins
-  notify: 
+  notify:
     - restart mackerel-agent
 
 - name: install mackerel-check-plugins
@@ -50,6 +50,11 @@
     name: mackerel-check-plugins
     state: latest
   when: mackerel_use_plugins
-  notify: 
+  notify:
     - restart mackerel-agent
 
+- name: install mkr
+  yum:
+    name: mkr
+    state: latest
+  when: mackerel_install_mkr

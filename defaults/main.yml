@@ -12,4 +12,5 @@ mackerel_agent_apikey: "yourapikey"
 # mackerel_check_plugins:
 #                 check_cron: "/usr/bin/check-procs -p crond"
 mackerel_use_plugins: no
+mackerel_install_mkr: no
 mackerel_agent_start_on_setup: yes
