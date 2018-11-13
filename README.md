@@ -28,6 +28,7 @@ mackerel_agent_roles:
   - "Another-Service:db"
 mackerel_agent_display_name: "My host"
 mackerel_use_plugins: yes # default: no
+mackerel_install_mkr: yes # default: no
 mackerel_agent_plugins:
   jvm: "/usr/bin/mackerel-plugin-jvm -javaname=NettyServer"
 mackerel_agent_include: "/etc/mackerel-agent/conf.d/*.conf"
