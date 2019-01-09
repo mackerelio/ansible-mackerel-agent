@@ -40,8 +40,8 @@
     - restart mackerel-agent
 
 - name: install mackerel-agent-plugins
-  apt: 
-    name: mackerel-agent-plugins 
+  apt:
+    name: mackerel-agent-plugins
     state: latest
     update_cache: yes
     force: yes
@@ -51,8 +51,8 @@
     - restart mackerel-agent
 
 - name: install mackerel-check-plugins
-  apt: 
-    name: mackerel-check-plugins 
+  apt:
+    name: mackerel-check-plugins
     state: latest
     update_cache: yes
     force: yes
@@ -60,3 +60,12 @@
   when: mackerel_use_plugins
   notify:
     - restart mackerel-agent
+
+- name: install mkr
+  apt:
+    name: mkr
+    state: latest
+    update_cache: yes
+    force: yes
+    dpkg_options: 'force-confdef,force-confold'
+  when: mackerel_install_mkr
