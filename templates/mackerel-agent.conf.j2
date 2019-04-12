@@ -49,6 +49,9 @@ check_interval = {{ value.check_interval }}
 {% if value.prevent_alert_auto_close is defined %}
 prevent_alert_auto_close = {{ value.prevent_alert_auto_close | bool | lower }}
 {% endif %}
+{% if value.action is defined %}
+action = { command = "{{ value.action.command }}"{% if value.action.env is defined %}, env={ {% for key, value in value.action.env.items() %}{% if loop.index > 1 %}, {% endif %}{{ key }} = "{{ value }}"{% endfor %}{% endif %} } }
+{% endif %}
 
 {% else %}{# if value.command is defined #}
 command = "{{ value }}"
