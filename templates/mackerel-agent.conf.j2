@@ -56,8 +56,8 @@ action = { command = "{{ value.action.command }}"
 {%- if loop.index > 1 %}, {%- endif %}
 {{ key }} = "{{ value }}"
 {%- endfor %}
-{%- endif %}{# if value.action.env is defined #}
-} }
+} {%- endif %}{# if value.action.env is defined #}
+ }
 {% endif %}{# if value.action is defined #}
 
 {% else %}{# if value.command is defined #}
