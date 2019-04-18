@@ -14,7 +14,10 @@
   register: config_directory
 
 - name: create config directory
-  file: path="{{ prefix_dir }}/etc/mackerel-agent" state=directory mode=0755
+  file:
+    path: "{{ prefix_dir }}/etc/mackerel-agent"
+    state: directory
+    mode: 0755
   when: config_directory.stat.exists == false
 
 - name: update config
