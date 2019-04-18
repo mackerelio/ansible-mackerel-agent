@@ -32,3 +32,16 @@
     mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_agent_display_name: "Test host"
+
+- hosts: 127.0.0.1
+  connection: local
+  tags:
+    - pidfile_root_include
+  roles:
+    - ../..
+  vars:
+    mackerel_agent_start_on_setup: no
+    mackerel_agent_apikey: "test-api-key"
+    mackerel_agent_pidfile: "/tmp/mackerel-agent.pid"
+    mackerel_agent_root: "/tmp/mackerel-agent"
+    mackerel_agent_include: "/etc/mackerel-agent/conf.d/*.conf"
