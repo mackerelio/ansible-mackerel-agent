@@ -72,6 +72,19 @@
 - hosts: 127.0.0.1
   connection: local
   tags:
+    - check_plugins_simple
+  roles:
+    - ../..
+  vars:
+    mackerel_agent_start_on_setup: no
+    mackerel_agent_apikey: "test-api-key"
+    mackerel_check_plugins:
+      uptime:
+        command: "/usr/bin/check-procs -p any_process"
+
+- hosts: 127.0.0.1
+  connection: local
+  tags:
     - check_plugins
   roles:
     - ../..
