@@ -49,6 +49,17 @@
 - hosts: 127.0.0.1
   connection: local
   tags:
+    - verbose
+  roles:
+    - ../..
+  vars:
+    mackerel_agent_start_on_setup: no
+    mackerel_agent_apikey: "test-api-key"
+    mackerel_agent_verbose: true
+
+- hosts: 127.0.0.1
+  connection: local
+  tags:
     - agent_plugins
   roles:
     - ../..
