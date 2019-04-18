@@ -1,6 +1,6 @@
 #!/bin/bash
 # Ref: https://qiita.com/tumf/items/ac055b0dbe9c3398a1dc
-set -euo pipefail
+set -uo pipefail # do not set -e
 
 usage_exit() {
   echo "Usage: $0 [-w] name" 1>&2
