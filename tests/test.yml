@@ -1,0 +1,34 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tags:
+    - simple
+  roles:
+    - ../..
+  vars:
+    mackerel_agent_start_on_setup: no
+    mackerel_agent_apikey: "test-api-key"
+
+- hosts: 127.0.0.1
+  connection: local
+  tags:
+    - agent_roles
+  roles:
+    - ../..
+  vars:
+    mackerel_agent_start_on_setup: no
+    mackerel_agent_apikey: "test-api-key"
+    mackerel_agent_roles:
+      - "test-service-1:app-1"
+      - "test-service-2:app-2"
+
+- hosts: 127.0.0.1
+  connection: local
+  tags:
+    - display_name
+  roles:
+    - ../..
+  vars:
+    mackerel_agent_start_on_setup: no
+    mackerel_agent_apikey: "test-api-key"
+    mackerel_agent_display_name: "Test host"
