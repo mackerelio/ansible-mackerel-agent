@@ -39,9 +39,9 @@ for test_case in $cases; do
     -e mackerel_agent_start_on_setup=false)
   if echo "$out" | tail -n 1 | grep -E "changed=0\s+unreachable=0\s+failed=0" >/dev/null
   then
-    echo -n "."
+    echo "OK: $test_case"
   else
-    echo "$test_case"
+    echo "FAIL: $test_case"
     echo
     echo "$out"
     errors=$(( errors+1 ))
@@ -49,7 +49,7 @@ for test_case in $cases; do
 done
 
 if [[ $errors -eq 0 ]]; then
-  echo " ok"
+  echo "All tests passed."
 else
   echo "${errors} error(s)"
 fi
