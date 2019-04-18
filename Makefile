@@ -1,10 +1,10 @@
-ANSIBLE_CMD         				 = ansible
+ANSIBLE_CMD                  = ansible
 ANSIBLE_PLAYBOOK_CMD         = ansible-playbook
 ANSIBLE_LOCAL_INVENTORY_FILE = inventories/dev
 ANSIBLE_LOCAL_PLAYBOOK_FILE  = dev.yml
 
 # for Centos
-#	http://d.hatena.ne.jp/tagomoris/20140318/1395118495
+# http://d.hatena.ne.jp/tagomoris/20140318/1395118495
 ANSIBLE_TRANSPORT=ssh
 ANSIBLE_SSH_ARGS=""
 ANSIBLE_SCP_IF_SSH=true
