@@ -20,3 +20,4 @@ mackerel_agent_apikey: "yourapikey"
 mackerel_use_plugins: no
 mackerel_install_mkr: no
 mackerel_agent_start_on_setup: yes
+prefix_dir: ""

@@ -8,10 +8,13 @@
 - include: amazonlinux.yml
   when: ansible_distribution == "Amazon"
 
+- name: create config directory
+  file: path="{{ prefix_dir }}/etc/mackerel-agent" state=directory mode=0755
+
 - name: update config
   template:
     src: mackerel-agent.conf.j2
-    dest: /etc/mackerel-agent/mackerel-agent.conf
+    dest: "{{ prefix_dir }}/etc/mackerel-agent/mackerel-agent.conf"
   notify: restart mackerel-agent
 
 - name: start mackerel-agent
