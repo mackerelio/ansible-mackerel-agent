@@ -36,7 +36,6 @@ command = "{{ command }}"
 [plugin.checks.{{ key }}]
 {% if value.command is defined %}
 command = "{{ value.command }}"
-
 {% if value.notification_interval is defined %}
 notification_interval = {{ value.notification_interval }}
 {% endif %}
