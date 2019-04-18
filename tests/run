@@ -32,7 +32,11 @@ fi
 errors=0
 
 for test_case in $cases; do
-  out=$(ansible-playbook ./tests/test.yml -i 127.0.0.1, -t "$test_case" -D $check -e prefix_dir="cases/${test_case}" -e ansible_distribution="")
+  out=$(ansible-playbook ./tests/test.yml -i 127.0.0.1, \
+    -t "$test_case" -D $check \
+    -e prefix_dir="cases/${test_case}" \
+    -e ansible_distribution="" \
+    -e mackerel_agent_start_on_setup=false)
   if echo "$out" | tail -n 1 | grep -E "changed=0\s+unreachable=0\s+failed=0" >/dev/null
   then
     echo -n "."

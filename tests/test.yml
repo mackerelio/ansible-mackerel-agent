@@ -6,7 +6,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
 
 - hosts: 127.0.0.1
@@ -16,7 +15,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_agent_roles:
       - "test-service-1:app-1"
@@ -29,7 +27,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_agent_display_name: "Test host"
 
@@ -40,7 +37,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_agent_pidfile: "/tmp/mackerel-agent.pid"
     mackerel_agent_root: "/tmp/mackerel-agent"
@@ -53,7 +49,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_agent_verbose: true
 
@@ -64,7 +59,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_agent_plugins:
       jvm: "/usr/bin/mackerel-plugin-jvm -javaname=NettyServer"
@@ -76,7 +70,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_check_plugins:
       uptime:
@@ -89,7 +82,6 @@
   roles:
     - ../..
   vars:
-    mackerel_agent_start_on_setup: no
     mackerel_agent_apikey: "test-api-key"
     mackerel_check_plugins:
       uptime:
