@@ -49,7 +49,7 @@ Example Playbook
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```yml
-- 
+-
   hosts: Hatena-Antenna2_backend
   vars:
     - mackerel_agent_apikey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -59,6 +59,16 @@ Including an example of how to use your role (for instance, with variables passe
   roles:
     - mackerelio.mackerel-agent
 ```
+
+How to test
+-----------
+
+Test cases are defined in [test.yml](tests/test.yml). To add a new test:
+
+- Add a test case in tests/test.yml. The case name is defined in `tags`.
+- Run `./tests/run -w test_case_name`. This command will generate `tests/cases/test_case_name` directory.
+- Check `./tests/run` command to exit with 0.
+- Run `git add tests/` and commit.
 
 License
 -------
