@@ -4,19 +4,20 @@ mackerel_agent_apikey: "yourapikey"
 # mackerel_agent_root: "/var/lib/mackerel-agent"
 # mackerel_agent_verbose: true
 # mackerel_agent_roles:
-#                 - "My-Service:app"
-#                 - "Another-Service:db"
+#   - "My-Service:app"
+#   - "Another-Service:db"
 # mackerel_agent_plugins:
-#                 jvm: "/usr/bin/mackerel-plugin-jvm -javaname=NettyServer"
+#   jvm: "/usr/bin/mackerel-plugin-jvm -javaname=NettyServer"
 # mackerel_agent_include: "/etc/mackerel-agent/conf.d/*.conf"
 # mackerel_check_plugins:
-#                 check_cron: "/usr/bin/check-procs -p crond"
-#                 check_any_procs: 
-#                   command: "/usr/bin/check-procs -p any_process"
-#                   action:
-#                     command: "echo \\\"Error any_process is not running.\\\" > log_file"
-#                     env:
-#                       FOO: foo
+#   check_cron: "/usr/bin/check-procs -p crond"
+#   check_any_procs:
+#     command: "/usr/bin/check-procs -p any_process"
+#     action:
+#       command: "echo \\\"Error any_process is not running.\\\" > log_file"
+#       env:
+#         FOO: foo
 mackerel_use_plugins: no
 mackerel_install_mkr: no
 mackerel_agent_start_on_setup: yes
+prefix_dir: ""

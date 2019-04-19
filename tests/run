@@ -1,0 +1,57 @@
+#!/bin/bash
+# Ref: https://qiita.com/tumf/items/ac055b0dbe9c3398a1dc
+set -uo pipefail # do not set -e
+
+usage_exit() {
+  echo "Usage: $0 [-w] name" 1>&2
+  exit 1
+}
+
+check="-C"
+while getopts wh option
+do
+  case $option in
+    w)
+      check=""
+      ;;
+    h)
+      usage_exit
+      ;;
+    *)
+      ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+mkdir -p tests/cases
+cases=$(ls tests/cases)
+if [[ $# -eq 1 ]];then
+  cases=$1
+fi
+errors=0
+
+for test_case in $cases; do
+  out=$(ansible-playbook ./tests/test.yml -i 127.0.0.1, \
+    -t "$test_case" -D $check \
+    -e prefix_dir="cases/${test_case}" \
+    -e ansible_distribution="" \
+    -e mackerel_agent_start_on_setup=false)
+  if echo "$out" | tail -n 1 | grep -E "changed=0\s+unreachable=0\s+failed=0" >/dev/null
+  then
+    echo "OK: $test_case"
+  else
+    echo "FAIL: $test_case"
+    echo
+    echo "$out"
+    errors=$(( errors+1 ))
+  fi
+done
+
+if [[ $errors -eq 0 ]]; then
+  echo "All tests passed."
+else
+  echo "${errors} error(s)"
+fi
+
+exit $errors
