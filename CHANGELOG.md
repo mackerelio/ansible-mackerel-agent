@@ -2,6 +2,13 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.8.4
+------
+
+- Add tasks for install mkr command #23 (by yukirii)
+- Enforce English response #25 (by ryosms)
+- Support check plugin action #26 (by Kuchitama)
+
 v0.8.3
 ------
 
