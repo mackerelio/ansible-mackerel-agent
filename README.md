@@ -40,7 +40,11 @@ mackerel_check_plugins:
     notification_interval: 10
     max_check_attempts: 3
     check_interval: 5
+    timeout_seconds: 45
     prevent_alert_auto_close: true
+    action:
+      command: "ruby /path/to/notify_something.rb"
+    memo: "This check monitor is ..."
 ```
 
 Example Playbook

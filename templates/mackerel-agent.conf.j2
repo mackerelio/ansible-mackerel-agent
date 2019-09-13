@@ -48,6 +48,12 @@ check_interval = {{ value.check_interval }}
 {% if value.prevent_alert_auto_close is defined %}
 prevent_alert_auto_close = {{ value.prevent_alert_auto_close | bool | lower }}
 {% endif %}
+{% if value.timeout_seconds is defined %}
+timeout_seconds = {{ value.timeout_seconds }}
+{% endif %}
+{% if value.memo is defined %}
+memo = "{{ value.memo }}"
+{% endif %}
 {% if value.action is defined %}
 action = { command = "{{ value.action.command }}"
 {%- if value.action.env is defined %}
