@@ -29,12 +29,6 @@
   when: (ansible_distribution == "Debian" and ansible_distribution_major_version|int >= 8) or
         (ansible_distribution == "Ubuntu" and ansible_distribution_version|float >= 16.04)
 
-- name: check repository 'mackerel'
-  shell: grep -r -E "^deb (\[arch=amd64\]\s)?http://apt.mackerel.io/.* mackerel contrib" /etc/apt/sources.list*
-  ignore_errors: True
-  register: check_repo
-  check_mode: no
-
 - name: install mackerel-agent
   apt:
     name: mackerel-agent
@@ -42,7 +36,7 @@
     update_cache: yes
     force: yes
     dpkg_options: 'force-confdef,force-confold'
-  when: check_repo.rc == 0
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -53,7 +47,8 @@
     update_cache: yes
     force: yes
     dpkg_options: 'force-confdef,force-confold'
-  when: check_repo.rc == 0 and mackerel_use_plugins
+  when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -64,7 +59,8 @@
     update_cache: yes
     force: yes
     dpkg_options: 'force-confdef,force-confold'
-  when: check_repo.rc == 0 and mackerel_use_plugins
+  when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -75,4 +71,5 @@
     update_cache: yes
     force: yes
     dpkg_options: 'force-confdef,force-confold'
-  when: check_repo.rc == 0 and mackerel_install_mkr
+  when: mackerel_install_mkr
+  ignore_errors: "{{ ansible_check_mode }}"

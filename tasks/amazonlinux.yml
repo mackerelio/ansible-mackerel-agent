@@ -33,23 +33,18 @@
     mode: 0644
   when: check_al2.rc == 0
 
-- name: check repository 'mackerel'
-  stat:
-    path: /etc/yum.repos.d/mackerel.repo
-  register: check_repo
-  check_mode: no
-
 - name: install mackerel-agent
   yum:
     name: mackerel-agent
     state: latest
-  when: check_repo.stat.exists
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: install mackerel-agent-plugins
   yum:
     name: mackerel-agent-plugins
     state: latest
-  when: check_repo.stat.exists and mackerel_use_plugins
+  when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -57,7 +52,8 @@
   yum:
     name: mackerel-check-plugins
     state: latest
-  when: check_repo.stat.exists and mackerel_use_plugins
+  when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -65,4 +61,5 @@
   yum:
     name: mkr
     state: latest
-  when: check_repo.stat.exists and mackerel_install_mkr
+  when: mackerel_install_mkr
+  ignore_errors: "{{ ansible_check_mode }}"
