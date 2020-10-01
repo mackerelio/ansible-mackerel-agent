@@ -2,6 +2,12 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.9.0
+------
+
+- Add check plugin items #29 (by yuichisatake)
+- Fix errors at check mode #31 (by Subaru365)
+
 v0.8.4
 ------
 
