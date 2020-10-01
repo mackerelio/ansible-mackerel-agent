@@ -36,6 +36,7 @@
     update_cache: yes
     force: yes
     dpkg_options: 'force-confdef,force-confold'
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -47,6 +48,7 @@
     force: yes
     dpkg_options: 'force-confdef,force-confold'
   when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -58,6 +60,7 @@
     force: yes
     dpkg_options: 'force-confdef,force-confold'
   when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -69,3 +72,4 @@
     force: yes
     dpkg_options: 'force-confdef,force-confold'
   when: mackerel_install_mkr
+  ignore_errors: "{{ ansible_check_mode }}"

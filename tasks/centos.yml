@@ -6,7 +6,7 @@
 
 - name: import mackerel GPG key v2
   rpm_key:
-    key=https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
+    key: https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
   when: ansible_distribution_major_version|int >= 7
 
 - name: add repository 'mackerel'
@@ -31,12 +31,14 @@
   yum:
     name: mackerel-agent
     state: latest
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: install mackerel-agent-plugins
   yum:
     name: mackerel-agent-plugins
     state: latest
   when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -45,6 +47,7 @@
     name: mackerel-check-plugins
     state: latest
   when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
   notify:
     - restart mackerel-agent
 
@@ -53,3 +56,4 @@
     name: mkr
     state: latest
   when: mackerel_install_mkr
+  ignore_errors: "{{ ansible_check_mode }}"

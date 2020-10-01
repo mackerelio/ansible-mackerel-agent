@@ -31,3 +31,4 @@
     name: mackerel-agent
     state: started
   when: mackerel_agent_start_on_setup
+  ignore_errors: "{{ ansible_check_mode }}"
