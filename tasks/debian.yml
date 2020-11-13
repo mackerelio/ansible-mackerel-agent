@@ -23,7 +23,7 @@
 
 - name: add repository 'mackerel' v2
   apt_repository:
-    repo: 'deb [arch=amd64] http://apt.mackerel.io/v2/ mackerel contrib'
+    repo: 'deb [arch=amd64,arm64] http://apt.mackerel.io/v2/ mackerel contrib'
     state: present
     update_cache: yes
   when: (ansible_distribution == "Debian" and ansible_distribution_major_version|int >= 8) or
