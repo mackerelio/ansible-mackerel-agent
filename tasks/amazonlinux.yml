@@ -4,6 +4,7 @@
   ignore_errors: True
   register: check_al2
   check_mode: no
+  changed_when: no
 
 - name: import mackerel GPG key
   rpm_key:
