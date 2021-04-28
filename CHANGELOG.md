@@ -2,6 +2,13 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.10.0
+-------
+
+- Support arm64 platform with apt v2 repository #33 (by lufia)
+- Suppress excessive `changed` message on Amazon Linux 2 #34 (by ikuwow)
+- Fix for supporting RHEL 8 #35 (by zyun-i)
+
 v0.9.0
 ------
 
