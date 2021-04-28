@@ -5,7 +5,7 @@ This file is used to list changes made in each version of the mackerel-agent rol
 v0.10.0
 -------
 
-- Support arm64 platform with apt v2 repository #33 (by lufiabb)
+- Support arm64 platform with apt v2 repository #33 (by lufia)
 - Suppress excessive `changed` message on Amazon Linux 2 #34 (by ikuwow)
 - Fix for supporting RHEL 8 #35 (by zyun-i)
 
