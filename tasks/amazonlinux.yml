@@ -1,29 +1,14 @@
 ---
-- name: check amazon linux 2
-  shell: LANG=C yum info installed system-release | awk '/^Release/ { print $3 }' | grep -q 'amzn2'
+- name: check amazon linux 2023
+  shell: LANG=C yum info installed system-release | awk '/^Release/ { print $3 }' | grep -q 'amzn2023'
   ignore_errors: True
-  register: check_al2
+  register: check_al2023
   check_mode: no
   changed_when: no
-
-- name: import mackerel GPG key
-  rpm_key:
-    key: https://mackerel.io/file/cert/GPG-KEY-mackerel
-  when: check_al2.rc != 0
 
 - name: import mackerel GPG key v2
   rpm_key:
     key: https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
-  when: check_al2.rc == 0
-
-- name: add repository 'mackerel'
-  copy:
-    src: amazonlinux-mackerel.repo
-    dest: /etc/yum.repos.d/mackerel.repo
-    owner: root
-    group: root
-    mode: 0644
-  when: check_al2.rc != 0
 
 - name: add repository 'mackerel' v2
   copy:
@@ -32,7 +17,16 @@
     owner: root
     group: root
     mode: 0644
-  when: check_al2.rc == 0
+  when: check_al2023.rc != 0
+
+- name: add repository 'mackerel' v2023
+  copy:
+    src: amazonlinux-mackerel-2023.repo
+    dest: /etc/yum.repos.d/mackerel.repo
+    owner: root
+    group: root
+    mode: 0644
+  when: check_al2023.rc == 0
 
 - name: install mackerel-agent
   yum:
