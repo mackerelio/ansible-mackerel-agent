@@ -1,11 +1,11 @@
 ---
-- include: debian.yml
+- include_tasks: debian.yml
   when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
-- include: centos.yml
+- include_tasks: centos.yml
   when: ansible_os_family == "RedHat" and ansible_distribution != "Amazon"
 
-- include: amazonlinux.yml
+- include_tasks: amazonlinux.yml
   when: ansible_distribution == "Amazon"
 
 - name: check config directory
