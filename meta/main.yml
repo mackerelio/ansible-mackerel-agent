@@ -4,21 +4,17 @@ galaxy_info:
   description: Install mackerel agent
   company: Hatena Co., Ltd.
   license: Apache2
-  min_ansible_version: 1.2
+  min_ansible_version: 2.4
   platforms:
   - name: EL
     versions:
-      - 7
-      - 6
+    - all
   - name: Ubuntu
     versions:
-    - trusty
-    - xenial
+    - all
   - name: Debian
     versions:
-    - wheezy
-    - jessie
-    - stretch
+    - all
   categories:
     - monitoring
 dependencies: []
