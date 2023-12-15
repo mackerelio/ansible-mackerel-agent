@@ -12,7 +12,7 @@ An Ansible role for installing mackerel-agent and official plugins.
 Requirements & Dependencies
 ---------------------------
 
-- Tested on Ansible 1.8.2 or higher
+- Tested on Ansible 2.4 or higher
 
 Role Variables
 --------------
