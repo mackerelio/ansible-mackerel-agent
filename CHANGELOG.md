@@ -2,6 +2,13 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.11.0
+-------
+
+- Change `include` to `include_tasks` #38 (by kamicup)
+- Support Amazon Linux 2023 #39 (by rmatsuoka)
+- Raise minimum ansible version #41 (by rmatsuoka)
+
 v0.10.0
 -------
 
