@@ -1,0 +1,37 @@
+---
+- include: debian.yml
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+
+- include: centos.yml
+  when: ansible_os_family == "RedHat" and ansible_distribution != "Amazon"
+
+- include: amazonlinux.yml
+  when: ansible_distribution == "Amazon" and ansible_distribution_major_version == "2"
+
+- include: amazonlinux2023.yml
+  when: ansible_distribution == "Amazon" and ansible_distribution_major_version == "2023"
+
+- name: check config directory
+  stat:
+    path: "{{ prefix_dir }}/etc/mackerel-agent"
+  register: config_directory
+
+- name: create config directory
+  file:
+    path: "{{ prefix_dir }}/etc/mackerel-agent"
+    state: directory
+    mode: 0755
+  when: config_directory.stat.exists == false
+
+- name: update config
+  template:
+    src: mackerel-agent.conf.j2
+    dest: "{{ prefix_dir }}/etc/mackerel-agent/mackerel-agent.conf"
+  notify: restart mackerel-agent
+
+- name: start mackerel-agent
+  service:
+    name: mackerel-agent
+    state: started
+  when: mackerel_agent_start_on_setup
+  ignore_errors: "{{ ansible_check_mode }}"

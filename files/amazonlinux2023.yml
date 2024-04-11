@@ -1,0 +1,55 @@
+---
+- name: import mackerel GPG key
+  rpm_key:
+    key: https://mackerel.io/file/cert/GPG-KEY-mackerel
+
+- name: import mackerel GPG key v2
+  rpm_key:
+    key: https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
+
+- name: add repository 'mackerel'
+  copy:
+    src: amazonlinux-mackerel.repo
+    dest: /etc/yum.repos.d/mackerel.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: add repository 'mackerel' v2 al2023
+  copy:
+    src: amazonlinux-mackerel-v2-2023.repo
+    dest: /etc/yum.repos.d/mackerel.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: install mackerel-agent
+  dnf:
+    name: mackerel-agent
+    state: latest
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: install mackerel-agent-plugins
+  dnf:
+    name: mackerel-agent-plugins
+    state: latest
+  when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
+  notify:
+    - restart mackerel-agent
+
+- name: install mackerel-check-plugins
+  dnf:
+    name: mackerel-check-plugins
+    state: latest
+  when: mackerel_use_plugins
+  ignore_errors: "{{ ansible_check_mode }}"
+  notify:
+    - restart mackerel-agent
+
+- name: install mkr
+  dnf:
+    name: mkr
+    state: latest
+  when: mackerel_install_mkr
+  ignore_errors: "{{ ansible_check_mode }}"
