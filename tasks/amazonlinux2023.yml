@@ -7,17 +7,9 @@
   rpm_key:
     key: https://mackerel.io/file/cert/GPG-KEY-mackerel-v2
 
-- name: add repository 'mackerel'
+- name: add repository 'mackerel' v2023
   copy:
-    src: amazonlinux-mackerel.repo
-    dest: /etc/yum.repos.d/mackerel.repo
-    owner: root
-    group: root
-    mode: 0644
-
-- name: add repository 'mackerel' v2 al2023
-  copy:
-    src: amazonlinux-mackerel-v2-2023.repo
+    src: amazonlinux-mackerel-v2023.repo
     dest: /etc/yum.repos.d/mackerel.repo
     owner: root
     group: root
