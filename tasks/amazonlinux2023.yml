@@ -9,7 +9,7 @@
 
 - name: add repository 'mackerel' v2023
   copy:
-    src: amazonlinux-mackerel-v2023.repo
+    src: amazonlinux-mackerel-2023.repo
     dest: /etc/yum.repos.d/mackerel.repo
     owner: root
     group: root
