@@ -2,6 +2,11 @@ mackerel-agent role CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent role.
 
+v0.12.0
+-------
+- s/categories/galaxy_tags/ (by rmatsuoka)
+- Modify for Amazon Linux 2023 (by yuichisatake)
+
 v0.11.0
 -------
 
