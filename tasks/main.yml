@@ -6,7 +6,10 @@
   when: ansible_os_family == "RedHat" and ansible_distribution != "Amazon"
 
 - include_tasks: amazonlinux.yml
-  when: ansible_distribution == "Amazon"
+  when: ansible_distribution == "Amazon" and ansible_distribution_major_version == "2"
+
+- include_tasks: amazonlinux2023.yml
+  when: ansible_distribution == "Amazon" and ansible_distribution_major_version == "2023"
 
 - name: check config directory
   stat:
