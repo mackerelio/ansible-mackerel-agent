@@ -1,0 +1,15 @@
+name: Release
+on:
+  release:
+    types:
+      - published
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: ansible-galaxy role import
+        run: |
+          ansible-galaxy role import --token "$ANSIBLE_TOKEN" --role-name mackerel-agent mackerelio ansible-mackerel-agent
+        env:
+          ANSIBLE_TOKEN: ${{ secrets.ANSIBLE_TOKEN }}
