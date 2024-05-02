@@ -1,6 +1,6 @@
 mackerel-agent role CHANGELOG
 =================================
-This file is used to list changes made in each version of the mackerel-agent role.
+The changes of newer versions since v0.12.0 will integrate with [GitHub Releases](https://github.com/mackerelio/ansible-mackerel-agent/releases).
 
 v0.12.0
 -------
