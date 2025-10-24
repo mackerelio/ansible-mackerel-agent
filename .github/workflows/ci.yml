@@ -12,7 +12,7 @@ jobs:
         os: ['ubuntu-22.04', 'ubuntu-24.04']
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
     - run: ansible --version
     - run: ansible-playbook --syntax-check ./tests/test.yml -i ./tests/hosts
     - run: ./tests/run
