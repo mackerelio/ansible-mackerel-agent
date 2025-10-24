@@ -7,7 +7,7 @@ jobs:
   release:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: ansible-galaxy role import
         run: |
           ansible-galaxy role import --token "$ANSIBLE_TOKEN" --role-name mackerel-agent mackerelio ansible-mackerel-agent
